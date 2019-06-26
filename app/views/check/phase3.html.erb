@@ -12,79 +12,19 @@
             <tr>
             <th>Name</th>
             <th>EMP_ID</th>
-            <th>Gender</th>
-            <th>Mobile no</th>
             <th>Department</th>
-            <th>Vehicle_no</th>
-            <th>Vehicle_type</th>
-            <th>Vehicle_model</th>
-            <th>Address</th>
-            <th>Registration Certificate</th>
-            <th>Aadhaar Card</th>
-            <th>RC holder name</th>
-            <th>Relationship</th>
             <th>status</th>
           </tr>
         </thead>
 <tbody>
 <% @phases.each do |phase| %>
-   <tr>
-   <% if phase.phase3 == false && phase.phase2 == true %>
+  <% if phase.phase3 == false && phase.phase2 == true %>
+  <tr>
+
        <td ><%= phase.name %></td>
        <td ><%= phase.unique_id %></td>
-       <td ><%= phase.gender %></td>
-       <td ><%= phase.mobile_no %></td>
        <td ><%= phase.department %></td>
-       <td ><%= phase.vichel_no %></td>
-       <td ><%= phase.vehical_type %></td>
-       <td ><%= phase.vichel_model%></td>
-       <td ><%= phase.address %></td>
-       <td ><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">view</button>
-         <!-- Modal -->
-         <div class="modal fade" id="myModal" role="dialog">
-           <div class="modal-dialog modal-lg modal-full">
-
-             <!-- Modal content-->
-             <div class="modal-content">
-               <div class="modal-header">
-                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-               </div>
-               <div class="modal-body ">
-                 <iframe src="<%= phase.registration_certificate %>" width="100%" height="500px">
-                   <p>Your browser does not support iframes.</p>
-                 </iframe>
-               </div>
-
-             </div>
-
-           </div>
-         </div>
-
-       </td>
-       <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">view</button>
-         <!-- Modal -->
-         <div class="modal fade" id="myModal" role="dialog">
-           <div class="modal-dialog modal-lg modal-full">
-
-             <!-- Modal content-->
-             <div class="modal-content">
-               <div class="modal-header">
-                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-               </div>
-               <div class="modal-body ">
-                 <iframe src="<%= phase.aadhaar_card %>" width="100%" height="500px">
-                   <p>Your browser does not support iframes.</p>
-                 </iframe>
-               </div>
-
-             </div>
-
-           </div>
-         </div>
-       </td>
-       <td ><%= phase.RC_holder_name %></td>
-       <td ><%= phase.relationship %></td>
-        <td><%= link_to "approve", approve_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td>
+        <td> <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment(<%=phase.id%>);" data-disable-with="Validating ...">Submit</button</td>
          <td><%= link_to "approve", disapprove_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td>
    <% end %>
    <% end %>
@@ -95,38 +35,40 @@
 <% if current_user %>
     <%= link_to "signout" , destroy_user_session_path ,method:     :delete  %>
     <%= link_to 'change password' , edit_user_registration_path %>
- 
- <% else %>
+
+  <center>
+    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment();" data-disable-with="Validating ...">Submit</button>
+  </center>
+<% else %>
    <%= render "devise/sessions#new" %>
 
  <% end %>
  </div>
  </div>
  </div>
- <table class ="table" id= "table_id">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>EMP_ID</th>
-      <th>Gender</th>
-      <th>Mobile no</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"><div class="modal-body" id="modal_response">
+    </div>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-  <% @phases.each do |phase| %>
-   <tr>
-   <% if phase.phase3 == true && phase.phase2 == true %>
-        <td><%= phase.name %></td>
-        <td><%= phase.unique_id %></td>
-        <td><%= phase.gender %></td>
-        <td><%= phase.mobile_no %></td>
-        <td><%= phase.department %></td>
-    <%end%>
-      </tr>
-      <%end%>
+<script>
+    function sticker_allotment(id){
+        $.ajax({
+            type: "PATCH",
+            url: "/generate/sticker/"+id,
+            dataType: "script",
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
+</script>
+<script >$(document).ready( function () {
+    $('#table_id').DataTable();
+} )</script>
 
-</tbody>
-</table>
+
  

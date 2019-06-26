@@ -14,7 +14,7 @@ class PstaffsController < ApplicationController
   # GET /pstaffs/1
   # GET /pstaffs/1.json
   def show
-    @pstaffs = Pstaff.find params[:id]
+    @pstaffs = Pstaff.find(params[:id])
     
     if current_user.id != @pstaffs.user_id 
       flash[:notice] = "You don't have access to that order!"
@@ -141,11 +141,11 @@ class PstaffsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pstaff
-      if(current_user.phase1 == false &&  current_user.phase2 == false && current_user.phase3 == false)
+      # if(current_user.phase1 == false &&  current_user.phase2 == false && current_user.phase3 == false)
       @pstaff = Pstaff.find(params[:id])
-    else
-       redirect_to new_user_session_path
-    end
+    # else
+    #    redirect_to new_user_session_path
+    # end
       
     end
 
