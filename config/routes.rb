@@ -9,11 +9,15 @@ Rails.application.routes.draw do
   get 'home/contact'
   get 'pstaffs/showuser'
   get 'home/index'
-
   get 'pstaffs/tstaff_new'
   get 'pstaffs/phdstaff_new'
   get 'pstaffs/vender_new'
   get 'pstaffs/others_new'
+
+  get "check/phase1/pstaff/:id", :action=>"show_form",:controller =>"check", :as =>"show_user_form"
+  patch "/generate/sticker/:id", :action=>"sticker",:controller =>"check",:as =>"sticker_number"
+
+
 
   resources :pstaffs
 

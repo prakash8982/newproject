@@ -1,7 +1,0 @@
-I"f(function() {
-  jQuery(function() {
-    return $('#table_id').dataTable();
-  });
-
-}).call(this);
-:ET
