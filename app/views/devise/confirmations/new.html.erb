@@ -1,0 +1,30 @@
+<%= bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <div class="container_fluid">
+    <div class="row" >
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <div class="shadow-lg p-3 mb-5 bg-black rounded">
+          <div class="card ">
+            <div class="card-header bg-secondary text-white"><h5>Enter Email</h5></div>
+            <div class="card-body">
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+<!--    <%#= f.label :email %><br />-->
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Resend" ,class:"btn btn-primary btn-sm" %>
+  </div>
+
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

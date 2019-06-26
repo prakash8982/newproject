@@ -1,0 +1,22 @@
+<div class="row">
+<h1>Editing</h1>
+</div>
+
+<% if @pstaff.type_applicant == "pstaff" %>
+        <%= render 'form', pstaff: @pstaff %>
+ <% elsif @pstaff.type_applicant == "tstaff" %>
+ 		 <%= render 'form1', pstaff: @pstaff %>
+ <% elsif @pstaff.type_applicant == "student" %>
+        <%= render 'phd_form', pstaff: @pstaff %>
+ <% elsif @pstaff.type_applicant == "others" %>
+        <%= render 'othres_form', pstaff: @pstaff %>
+<% end %>
+
+
+
+<div class="row">
+	<h1 class="align-left">
+<%= link_to 'Show', @pstaff ,class:"btn btn-primary align-right" %> </h1>
+<h1 class="align-right">
+<%= link_to 'Back', pstaffs_path, class:"btn btn-primary align-left"  %></h1>
+</div>

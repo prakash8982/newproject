@@ -1,0 +1,53 @@
+<div class="jumbotron">
+     NITK SURATHKAL
+</div>
+
+
+  <%= current_user.email %>
+ 
+
+
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">Our Logo</a>
+  <%= link_to "home",home_index_path %>
+  <%= link_to "about",home_about_path %>
+  <%= link_to "sign up",new_user_registration_path %>
+  <%= link_to "sign in",new_user_session_path %>
+  <%= link_to "contact us",home_contact_path %>
+  
+</nav>
+
+
+<!--
+<div class="container">
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul >
+      <li ><%= link_to "sign up",new_user_registration_path %> </li>
+      <li ><%= link_to "sign in",new_user_session_path %></li>
+      <li><%= link_to "sign up",new_user_registration_path %></li>
+    </ul>
+  </div>
+</nav>
+</div>  -->
+ <br>
+ <br>
+<div class="container ">
+  <div class="container-fluid"> 
+
+  <h3>  for parmanenet staffs         <%= link_to "apply",new_pstaff_path %></h3> 
+  <h3>  for  temprary  staffs          <%= link_to "apply",pstaffs_tstaff_new_path %></h3>
+  <h3>  for phdscholors                <%= link_to "apply", pstaffs_phdstaff_new_path%></h3>
+  <h3>  for other staffs           <%= link_to "apply",pstaffs_others_new_path %></h3>
+  <h3>  logout     <% if current_user %>
+    <%= link_to "signout" , destroy_user_session_path ,method:     :delete  %>  <%end %></h3>
+  
+</div>
+</div>
+
+

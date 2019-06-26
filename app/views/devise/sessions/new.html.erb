@@ -1,0 +1,72 @@
+<!--<div class="jumbotron">-->
+<!--     NITK SURATHKAL-->
+<!--</div>-->
+
+<!--<ul class="nav nav-pills pull-right">-->
+  <%# if user_signed_in? %>
+<!--    <li><%#= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>-->
+  <%# else %>
+<!--    <li><%#= link_to "Sign in", new_user_session_path %></li>-->
+<!--    <li><%#= link_to "Sign up", new_user_registration_path %></li>-->
+  <%# end %>
+<!--</ul>-->
+
+
+
+<!--<nav class="navbar navbar-light bg-light">-->
+<!--  <a class="navbar-brand" href="/">Our L.ogo</a>-->
+  <%#= link_to "home",new_user_session_path  %>
+  <%#= link_to "about",home_about_path %>
+  <%#= link_to "sign up",new_user_registration_path %>
+  <%#= link_to "sign in",new_user_session_path %>
+  <%#= link_to "contact us",home_contect_path %>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="container_fluid">
+    <div class="row" >
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <div class="shadow-lg p-3 mb-5 bg-black rounded">
+  <div class="card ">
+    <div class="card-header bg-primary text-white"><h3>Log In</h3></div>
+    <div class="card-body">
+      <div class="field">
+
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+      <div class="field">
+
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in" %>
+      </div>
+
+
+<% end %>
+<!--<div class="conntainer">-->
+   <%#= link_to "sign up",new_user_registration_path %>
+      <%#= link_to "sign in",new_user_session_path %>
+     
+
+
+<!--</div>-->
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

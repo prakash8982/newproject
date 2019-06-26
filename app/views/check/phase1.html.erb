@@ -1,0 +1,105 @@
+<% if current_user.phase1 ==true%>
+
+ <!-- <p> <h1>Unapproved application</h1> count = <%= @phases.where(:phase1 => false).count %></p>  -->
+
+<div class="shadow-lg p-3 mb-5 bg-black rounded">
+    <div class="panel panel-default">
+      <div class="panel-heading" >
+        <h2 class="text-center"><b>Unapproved Application</b></h2>
+      </div>
+      <div class="panel-body">
+
+        <table class="table table-hover table-bordered table-striped" id="phase1_id">
+  <thead >
+
+      <tr>
+      <th>Name</th>
+      <th>EMP_ID</th>
+      <th>Department</th>
+      <th>show</th>
+      <th> Approve </th>
+      <th>Disapprove</th>
+
+
+      </tr>
+  </thead>
+<tbody >
+<% @phases.each do |phase| %>
+   <tr>
+   <% if phase.phase1 == false %>
+
+        <td ><%= phase.name %></td>
+        <td ><%= phase.unique_id %></td>
+       <td ><%= phase.department %></td>
+    
+      <!--  <td ><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">view</button> -->
+         <!-- Modal -->
+         <!-- <div class="modal fade" id="myModal" role="dialog">
+           <div class="modal-dialog modal-lg modal-full"> -->
+
+             <!-- Modal content
+             <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <div class="modal-body ">
+                 <iframe src="<%=phase.registration_certificate %>" width="100%" height="500px">
+                   <p>Your browser does not support iframes.</p>
+                 </iframe>
+               </div>
+
+             </div>
+
+           </div>
+         </div>
+
+       </td>
+       <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">view</button>
+         Modal -->
+         <!-- <div class="modal fade" id="myModal" role="dialog">
+           <div class="modal-dialog modal-lg modal-full">
+
+             <!-- Modal content-->
+             <!-- <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <div class="modal-body ">
+                 <iframe src="<%= phase.aadhaar_card %>" width="100%" height="500px">
+                   <p>Your browser does not support iframes.</p>
+                 </iframe>
+               </div>
+
+             </div>
+
+           </div>
+         </div>
+
+       </td> --> 
+       <td ><%= link_to "Show", pstaff_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td>
+        <td ><%= link_to "Approve", approve_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td>
+                <td ><%= link_to "Disapprove", disapprove_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td>
+   
+    </tr>
+     <% end %>
+
+    <% end %>
+    </tbody>
+    
+
+     </table>
+<% if current_user %>
+    <%= link_to "signout" , destroy_user_session_path ,method:     :delete  %>
+    <%= link_to 'change password' , edit_user_registration_path %>
+
+ <% end %>
+ 
+<% else %>
+    <%= render "devise/sessions#new" %>
+<%end %>
+</div>
+ </div>
+ </div>
+ <script >$(document).ready( function () {
+    $('#phase1_id').DataTable();
+} )</script>

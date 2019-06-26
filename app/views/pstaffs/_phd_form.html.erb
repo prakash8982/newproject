@@ -1,0 +1,93 @@
+<%= bootstrap_form_with(model: pstaff, local: true) do |form| %>
+  <% if pstaff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pstaff.errors.count, "error") %> prohibited this pstaff from being saved:</h2>
+
+      <ul>
+      <% pstaff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class ="jubotron text-center" >
+      <h1 class="display-7">Students</h1>
+ </div>
+ <div class="container_fluid" ">
+  <div class="row" >
+    <div class="col-sm-4">
+    </div>
+ <div class="col-sm-4" >
+  <div class="shadow-lg p-3 mb-5 bg-black rounded">
+  <div class="field" >
+    <h5><%= form.text_field :name %></h5>
+  </div>
+
+
+  <div class="field">
+    <h5><%= form.text_field :gender %></h5>
+  </div>
+
+  <div class="field">
+    <h5><%= form.text_field :unique_id %></h5>
+  </div>
+
+  <div class="field">
+    <h5><%= form.text_field :vichel_no %></h5>
+  </div>
+
+ <div class="field">
+  <h5><%= form.text_field :vehical_type %></h5>
+  </div>
+   
+   <div class="field">
+  <h5><%= form.text_field :vehical_model %></h5>
+  </div>
+
+
+  <div class="field">
+   <h5><%= form.text_field :mobile_no %></h5>
+  </div>
+
+ <div class="dropdown">
+    <h5><%= form.select :department, Pstaff::TEMP1  %></h5>
+  </div>
+  <div class="field">
+   <h5><%= form.text_field :address %></h5>
+  </div>
+
+  
+
+  <div class="field">
+  <h5><%= form.file_field :registration_certificate %></h5>
+  </div>
+
+  <div class="field">
+   <h5><%= form.file_field :aadhaar_card %></h5>
+  </div>
+
+  <div class="field">
+   <p> if you are hostler then upload the medical certificate or if you are dyascholer then upload your room aggrement  </p>
+  <<div class="field">
+  <h5><%= form.file_field :document %></h5>
+  </div>
+  </div>
+
+  <div class="field">
+   <p> if registration certificate note on the name of the applicant then fill the name on the RC  and relationship between the applicant and RC holder </p>
+  <h5><%= form.text_field :RC_holder_name %></h5>
+  <h5><%= form.text_field :relationship %></h5>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "Submit", class:"btn btn-primary" %>
+    
+  </div>
+ </div>
+</div>
+</div> 
+</div>
+
+
+<% end %>

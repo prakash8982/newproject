@@ -1,0 +1,73 @@
+<script >$(document).ready( function () {
+    $('#pstaff_id').DataTable();
+} )</script>
+<div class="shadow-lg p-3 mb-5 bg-black rounded">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="text-center"><b>APPLICATIONS</b></h2>
+      </div>
+      <div class="panel-body">
+ <table class="table table-striped" id= "pstaff_id">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>EMP_ID</th>
+      <th>Department</th>
+      <th>Phase1</th>
+      <th>Phase2</th>
+      <th>Phase3</th>
+      <th>show/edit/destory</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pstaffs.each do |pstaff| %>
+      <tr>
+        <td><%= pstaff.name %></td>
+        <td><%= pstaff.unique_id %></td>
+        <td><%= pstaff.department %></td>
+        
+        <% if pstaff.phase1 == false %>
+            <td>yet Not Approved</td>
+        <% else %>
+               <td>Approved</td>
+        <% end %>
+         <% if pstaff.phase2 == false %>
+            <td>yet Not Approved</td>
+        <% else %>
+             <td>Approved</td> 
+         <% end %> 
+        <% if pstaff.phase3 == false %>
+           <td>yet Not Approved</td>
+        <% else %>
+           <td>Approved</td>
+         <% end %>  
+         <td><%= link_to 'Show', pstaff %>
+        <% if pstaff.phase1 == false %>
+           <%= link_to 'Edit', edit_pstaff_path(pstaff) %>
+           </td>
+        <% end %>
+
+
+        <% if current_user && current_user.admin %>
+           current_user.redirect_to phase1_index_path 
+        <td><%= link_to 'Edit', edit_pstaff_path(pstaff) %></td>
+        <td><%= link_to 'Destroy', pstaff, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <% end %>
+        </tr> 
+
+
+    <% end %>
+  </tbody>
+</table>
+<br>
+    <% if current_user %>
+    <%= link_to "signout" , destroy_user_session_path ,method:     :delete  %>
+    <% else %>
+    <%= link_to "signin" , new_user_session_path %>
+     <%= link_to "signin" , new_user_registration_path %>
+     <% end %>
+
+     <!-- all the condition to redirecut the form from here to its perticular form -->
+<%= link_to 'apply_for_another_vichel', new_pstaff_path %>
+<%= link_to 'change password' , edit_user_registration_path %>

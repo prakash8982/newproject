@@ -1,0 +1,65 @@
+<%= bootstrap_form_with(model: pstaff, local: true) do |form| %>
+  <% if pstaff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pstaff.errors.count, "error") %> prohibited this pstaff from being saved:</h2>
+
+      <ul>
+      <% pstaff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class ="jubotron text-center" >
+      <h1 class="display-7">Vender Staff</h1>
+ </div>
+ <div class="container_fluid" ">
+  <div class="row" >
+    <div class="col-sm-4">
+    </div>
+ <div class="col-sm-4" >
+  <div class="shadow-lg p-3 mb-5 bg-black rounded">
+  <div class="field" >
+    <h5><%= form.text_field :name %></h5>
+  </div>
+
+
+  <div class="field">
+    <h5><%= form.text_field :gender %></h5>
+  </div>
+
+  <div class="field">
+   <h5><%= form.text_field :mobile_no %></h5>
+  </div>
+
+  <div class="field">
+    <h5><%= form.text_field :department %></h5>
+  </div>
+
+  <div class="field">
+   <h5><%= form.text_field :address %></h5>
+  </div>
+
+  <div class="field">
+  <h5><%= form.text_field :vehical_type %></h5>
+  </div>
+
+  <div class="field">
+  <h5><%= form.file_field :registration_certificate %></h5>
+  </div>
+
+  <div class="field">
+   <h5><%= form.file_field :aadhaar_card %></h5>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit", class:"btn btn-primary" %>
+    
+  </div>
+ </div>
+</div>
+</div> 
+</div>
+
+
+<% end %>

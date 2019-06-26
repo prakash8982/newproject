@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head >
+    <title>Project1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+
+    
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <%= stylesheet_link_tag "application.css" %>
+  </head>
+  <body>
+
+<!--    <div class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">-->
+      <%#= link_to "Home",new_user_session_path  %>
+      <%#= link_to "About",home_about_path %>
+      <%#= link_to "Sign up",new_user_registration_path %>
+      <%#= link_to "Sign in",new_user_session_path %>
+      <%#= link_to "Contact us",home_contect_path %>
+<!--    </div>-->
+<%= render 'layouts/menu' %>
+  <div class="container">
+  <%= render 'layouts/messages' %>
+  </div>
+    <%#= render 'layouts/messages' %>
+<!--  <p class="notice"><%#= notice %></p>-->
+<!--  <p class="alert"><%#= alert %></p>-->
+
+
+  <br>
+  <br>
+  <%= yield  %>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50" >
+  <div class="container text-center">
+    <small>Copyright &copy; Your Website</small>
+  </div>
+</footer>
+  </body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>

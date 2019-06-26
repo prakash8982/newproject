@@ -1,0 +1,7 @@
+<% @pstaff.type_applicant = 'pstaff' %>
+<% @pstaff.save %>
+
+<%= render 'form', pstaff: @pstaff %>
+
+
+<%= link_to 'Back', pstaffs_path %>

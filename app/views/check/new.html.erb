@@ -1,0 +1,6 @@
+<%= form_tag({controller: "check", action: "new"}, method: "post") do %>
+    <%= label_tag(:sticker, "Sticker Number:") %>
+    <%= text_field_tag(:sticker) %>
+    <%= hidden_field_tag(:@user, params["@user"])%>
+    <%= submit_tag("submit") %>
+<% end %>
