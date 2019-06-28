@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get "check/phase1/pstaff/:id", :action=>"show_form",:controller =>"check", :as =>"show_user_form"
   patch "/generate/sticker/:id", :action=>"sticker",:controller =>"check",:as =>"sticker_number"
+  patch "/generate/remark/:id", :action=>"remark",:controller=>"check", :as =>"remark"
 
 
 
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   get "check/phase2"
   get "check/phase3"
   #get "check/sticker"
+  get  "check/show_user_form/:id" , :action=>"show_user_form", :controller=>"check", :as=>"show_user"
   post "request/approve/:id" , :action=>"approve",:controller=>"check",:as=>"approve"  
   post "request/disapprove/:id" , :action=>"disapprove",:controller=>"check",:as=>"disapprove"  
 

@@ -10,56 +10,66 @@
       </ul>
     </div>
   <% end %>
- <div class ="jubotron text-center" >
-      <h1 class="display-7">Temprary Staff</h1>
- </div>
- <div class="container_fluid" ">
-  <div class="row" >
-    <div class="col-sm-4">
-    </div>
- <div class="col-sm-4" >
-  <div class="shadow-lg p-3 mb-5 bg-black rounded">
-  <div class="field" >
-    <h5><%= form.text_field :name %></h5>
+ <div class="container_fluid">
+      <div class="row" >
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <div class="shadow-lg p-3 mb-5 bg-black rounded">
+            <div class="card ">
+              <div class="card-header bg-info text-white text-center"><h2>Other Staff</h2></div>
+              <div class="card-body">
+<div class="field" >
+    <h5><%= form.text_field :name,:required=>true,class:"label"%></h5>
   </div>
 
+
+  <div class="dropdown">
+    <h5><%= form.select :gender, Pstaff::GENDER ,class:"label"%></h5>
+  </div>
 
   <div class="field">
-    <h5><%= form.text_field :gender %></h5>
+    <h5><%= form.text_field :unique_id , label: "Addharcard Number",:required=>true,class:"label"%></h5>
   </div>
 
   <div class="field">
-    <h5><%= form.text_field :vichel_no %></h5>
+    <h5><%= form.text_field :vichel_no, label: "Vehicle Number",:required=>true,class:"label" %></h5>
   </div>
 
+   
+  <div class="field">
+  <h5><%= form.text_field :type_applicant, label: "Applicant Type",:required=>true,:disabled=>true, class:"label" %></h5>
+  </div>
+   
  <div class="field">
-  <h5><%= form.text_field :vehical_type %></h5>
+  <h5><%= form.text_field :vehical_type, label: "Vehicle Type",:required=> true ,class:"label"%></h5>
   </div>
    
    <div class="field">
-  <h5><%= form.text_field :vehical_model %></h5>
+  <h5><%= form.text_field :vichel_model,label: "Vehicle Model",:required=> true,class:"label"%></h5>
   </div>
 
 
   <div class="field">
-   <h5><%= form.text_field :mobile_no %></h5>
+   <h5><%= form.text_field :mobile_no,label:"Mobile No",:required=>true,class:"label" %></h5>
   </div>
 
-   <div class="dropdown">
-    <h5><%= form.select :department, Pstaff::TEMP2  %></h5>
+  <div class="dropdown">
+    <h5><%= form.select :department, Pstaff::TEMP ,:required=>true,class:"label" %></h5>
   </div>
+
   <div class="field">
-   <h5><%= form.text_field :address %></h5>
+   <h5><%= form.text_field :address,:required=>true,class:"label"%></h5>
   </div>
 
   
 
   <div class="field">
-  <h5><%= form.file_field :registration_certificate %></h5>
+  <h5><%= form.file_field :registration_certificate ,:required=>true,class:"label"%></h5>
   </div>
 
   <div class="field">
-   <h5><%= form.file_field :aadhaar_card %></h5>
+   <h5><%= form.file_field :aadhaar_card ,:required=>true,class:"label" %></h5>
   </div>
 
   <div class="field">
@@ -76,6 +86,8 @@
  </div>
 </div>
 </div> 
+</div>
+</div>
 </div>
 
 

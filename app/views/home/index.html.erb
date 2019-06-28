@@ -1,53 +1,105 @@
-<div class="jumbotron">
-     NITK SURATHKAL
-</div>
-
-
-  <%= current_user.email %>
- 
-
-
-
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/">Our Logo</a>
-  <%= link_to "home",home_index_path %>
-  <%= link_to "about",home_about_path %>
-  <%= link_to "sign up",new_user_registration_path %>
-  <%= link_to "sign in",new_user_session_path %>
-  <%= link_to "contact us",home_contact_path %>
-  
-</nav>
-
-
-<!--
-<div class="container">
-
-<nav class="navbar navbar-default">
+<section id="team" class="pb-5">
   <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+    <h5 class="section-title h1">Apply As</h5>
+    <div class="row">
+      <!-- Team member -->
+      <div class="col-xs-12 col-sm-6 col-md-4">
+<!--        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">-->
+<!--          <div class="mainflip">-->
+            <div class="frontside">
+              <div class="card">
+                <div class="card-body text-center">
+                  <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+                  <h2 class="card-title">Permanant Staff</h2>
+                  <button type="submit" class="btn navbar-btn btn-danger" name="logout" ><%= link_to "apply",new_pstaff_path %> </button>
+
+                </div>
+              </div>
+            </div>
+
+
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <!--        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">-->
+        <!--          <div class="mainflip">-->
+        <div class="frontside">
+          <div class="card">
+            <div class="card-body text-center">
+              <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+              <h2 class="card-title">Temparary Staff</h2>
+              <button type="submit" class="btn navbar-btn btn-danger" name="logout" ><%= link_to "apply",pstaffs_tstaff_new_path %></button>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <!--        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">-->
+        <!--          <div class="mainflip">-->
+        <div class="frontside">
+          <div class="card">
+            <div class="card-body text-center">
+              <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+              <h2 class="card-title">Scholars</h2>
+              <button type="submit" class="btn navbar-btn btn-danger" name="logout" ><%= link_to "apply", pstaffs_phdstaff_new_path%> </button>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <!--        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">-->
+        <!--          <div class="mainflip">-->
+        <div class="frontside">
+          <div class="card">
+            <div class="card-body text-center">
+              <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
+              <h2 class="card-title">Others</h2>
+              <button type="submit" class="btn navbar-btn btn-danger" name="logout" > <%= link_to "apply",pstaffs_others_new_path %></button>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+      </div>
+
+
+
     </div>
-    <ul >
-      <li ><%= link_to "sign up",new_user_registration_path %> </li>
-      <li ><%= link_to "sign in",new_user_session_path %></li>
-      <li><%= link_to "sign up",new_user_registration_path %></li>
-    </ul>
   </div>
-</nav>
-</div>  -->
- <br>
- <br>
-<div class="container ">
-  <div class="container-fluid"> 
 
-  <h3>  for parmanenet staffs         <%= link_to "apply",new_pstaff_path %></h3> 
-  <h3>  for  temprary  staffs          <%= link_to "apply",pstaffs_tstaff_new_path %></h3>
-  <h3>  for phdscholors                <%= link_to "apply", pstaffs_phdstaff_new_path%></h3>
-  <h3>  for other staffs           <%= link_to "apply",pstaffs_others_new_path %></h3>
-  <h3>  logout     <% if current_user %>
-    <%= link_to "signout" , destroy_user_session_path ,method:     :delete  %>  <%end %></h3>
-  
-</div>
-</div>
+</section>
 
+
+
+
+
+
+<!--        <button class="button button3" style="background-color: cadetblue" class="btn btn-default"  ><%#= link_to "apply",new_pstaff_path %></button>-->
+<!--        <button class="button button4" style="background-color: cadetblue">12px</button>-->
+<!--        <button class="button button4" style="background-color: cadetblue">12px</button>-->
+<!--        <button class="button button4" style="background-color: cadetblue">12px</button>-->
+<!--        <br>-->
+
+<!--  <h3>          </h3>-->
+<!--  <h3>  for  temprary  staffs          <%#= link_to "apply",pstaffs_tstaff_new_path %></h3>-->
+<!--  <h3>  for phdscholors                <%#= link_to "apply", pstaffs_phdstaff_new_path%></h3>-->
+<!--  <h3>  for other staffs           <%#= link_to "apply",pstaffs_others_new_path %></h3>-->
+<!--    </div>-->
+           <%# if current_user %>
+    <%#= link_to "signout" , destroy_user_session_path ,method:  :delete,class:"btn btn-success" %>  <%#end %>
 

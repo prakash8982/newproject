@@ -34,7 +34,7 @@ class PstaffsController < ApplicationController
 
   def new
     if(current_user.phase1 == false &&  current_user.phase2 == false && current_user.phase3 == false)
-      @pstaff = current_user.pstaffs.build
+             @pstaff = current_user.pstaffs.build
     else
        redirect_to new_user_session_path
     end
@@ -106,6 +106,7 @@ class PstaffsController < ApplicationController
   # PATCH/PUT /pstaffs/1
   # PATCH/PUT /pstaffs/1.json
   def update
+    
     respond_to do |format|
       if @pstaff.update(pstaff_params)
         @user = User.all
@@ -151,6 +152,6 @@ class PstaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pstaff_params
-      params.require(:pstaff).permit(:name, :gender, :unique_id, :vichel_no, :vichel_type, :vichel_model, :mobile_no, :department, :address, :registration_certificate, :aadhaar_card, :type_applicant, :RC_holder_name, :relationship)
+      params.require(:pstaff).permit(:name, :gender, :unique_id, :vichel_no, :vichel_model, :vehical_type, :mobile_no, :department, :address, :registration_certificate, :aadhaar_card, :type_applicant, :RC_holder_name, :relationship)
     end
 end

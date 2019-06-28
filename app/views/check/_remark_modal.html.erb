@@ -1,0 +1,21 @@
+  <%=form_for([@current_user,@remark],:url=>remark_path) do |f| %>
+
+
+    <%= f.text_field :name,{:class=>'form-control',:placeholder=>'Sticker Number',:required=>true} %>
+    <br>
+    <% if @current_user.phase1 == true %>
+    <%= f.text_field :phase1_remark,{:class=>'form-control',:placeholder=>'Remark',:required=>true} 
+    %>
+    <% elsif @current_user.phase2 == true %>
+         <%= f.text_field :phase2_remark,{:class=>'form-control',:placeholder=>'Remark',:required=>true} %>
+    <% elsif @current_user.phase3 == true %>
+        <%= f.text_field :phase3_remark,{:class=>'form-control',:placeholder=>'Remark',:required=>true} %>
+    	
+    <%end%>
+    
+    
+    <br>
+
+    <%=f.button "approve",:name=>"commit",:value=>"Submit",:class=>'btn btn-sm btn-success',:remote=>true %>
+
+  <% end %>

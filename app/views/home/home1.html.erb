@@ -1,48 +1,43 @@
+<!-- <! <nav class="navbar navbar-expand-lg navbar-hover bg-dark fixed-top" style="padding: 20px">
+  <a class="navbar-brand" ><%= link_to "Home",root_path, style:"font-size:18px;color: white;" %></a>
 
+  <a class="navbar-brand" ><%=  link_to "About",home_about_path , style:"font-size:18px;color: white;" %></a>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="http://placehold.it/150x50?text=Logo" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
-    </div>
+  
+
+  <a class="navbar-brand" ><%= link_to "Contact us",home_contact_path, style:"font-size:18px;color: white;" %></a>
+</nav> -->
+<!-- 
+<nav class="navbar navbar-expand-sm bg-secondary navbar-light fixed-top" >
+  <a ><b><%= link_to "Home",new_user_session_path, class:"navbar-brand text-left",style:"font-size:22px;color: white;" %></b></a>
+  
+
+    
+  <% if current_user %>
+    <a ><%= link_to "signout" , destroy_user_session_path ,method:  :delete,class:"btn btn-success ml-auto mr-1 btn-md" %></a>
+  <% else %>
+  <a ><%= link_to "Sign up",new_user_registration_path, class:"btn btn-success ml-auto mr-1 btn-md" %></a>
+      <a ><%= link_to "Sign in",new_user_session_path, class:"btn btn-success ml-auto mr-1 btn-md" %></a>
+	<%end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+    <ul class="navbar-nav text-left">
+      <li class="nav-item active">
+        <a ><b><%=  link_to "About",home_about_path ,class:"nav-link" ,style:"font-size:22px;color: white;" %></b></a>
+      </li>
+      <li class="nav-item active">
+      <a ><b><%= link_to "Contact us",home_contact_path,class:"nav-link" ,style:"font-size:22px;color: white;" %></b></a>
+    </li>
+    </ul>
   </div>
 </nav>
 
 
-<!--<nav class="navbar navbar-light bg-light">-->
-<!--  <a class="navbar-brand" href="/">Our Logo</a>-->
-  <%#= link_to "home",new_user_session_path %>
-  <%#= link_to "about",home_about_path %>
-  <%#= link_to "sign up",new_user_registration_path %>
-  <%#= link_to "sign in",new_user_session_path %>
-  <%#= link_to "contect us",home_contect_path %>
-  
-<!--</nav>-->
-<!--<div class="conntainer">-->
-   <%#= link_to "sign up",new_user_registration_path %>
-      <%#= link_to "sign in",new_user_session_path %>
-     
 
+<a class="navbar-brand" ><%= link_to "Sign up",new_user_registration_path, style:"font-size:18px;color: white;" %></a>
 
-<!--</div>-->
+  <a class="navbar-brand" ><%= link_to "Sign in",new_user_session_path, style:"font-size:18px;color: white;" %></a>  -->

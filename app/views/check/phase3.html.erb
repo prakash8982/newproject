@@ -1,5 +1,5 @@
 <% if current_user.phase3 ==true%>
-<p id="notice"><%= notice %></p>
+
 <div class="shadow-lg p-3 mb-5 bg-black rounded">
   <div class="panel panel-default">
     <div class="panel-heading" >
@@ -7,48 +7,69 @@
     </div>
     <div class="panel-body">
 
-      <table id="table_id" class="table table-striped">
-          <thead>
+<table id="table_id" class="table table-striped">
+<thead>
             <tr>
             <th>Name</th>
             <th>EMP_ID</th>
             <th>Department</th>
-            <th>status</th>
+            <th>Remark</th>
+            <th>Show</th>
+            <th>approve</th>
+            <th>disapprove</th>
           </tr>
-        </thead>
+</thead>
 <tbody>
 <% @phases.each do |phase| %>
-  <% if phase.phase3 == false && phase.phase2 == true %>
+  <% if phase.phase3 == false && phase.phase2 == true && phase.disapprove == false %>
   <tr>
 
        <td ><%= phase.name %></td>
        <td ><%= phase.unique_id %></td>
        <td ><%= phase.department %></td>
-        <td> <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment(<%=phase.id%>);" data-disable-with="Validating ...">Submit</button</td>
-         <td><%= link_to "approve", disapprove_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td>
+       <td><%=phase.phase2_remark%></td>
+       <td ><%= link_to "Show", show_user_path(phase.id), method: :get,class:"btn btn-primary btn-sm" %></td>
+        <td> <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment(<%=phase.id%>);" data-disable-with="Validating ...">Submit</button></td>
+         <td><button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="remark(<%= phase.id%>);" data-disable-with="Validating ...">Submit</button></td>
+   
+  </tr>
+    <% end %>
    <% end %>
-   <% end %>
-    </tr>
-     <%end %>
 </tbody>
 </table>
 <% if current_user %>
     <%= link_to "signout" , destroy_user_session_path ,method:     :delete  %>
     <%= link_to 'change password' , edit_user_registration_path %>
+<% end %>
 
-  <center>
-    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment();" data-disable-with="Validating ...">Submit</button>
-  </center>
+   <!-- <center>
+    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="remark();" data-disable-with="Validating ...">Submit</button>
+  </center>  -->
 <% else %>
    <%= render "devise/sessions#new" %>
 
- <% end %>
+<% end %>
  </div>
  </div>
  </div>
+
+
+
+<!-- for sticker model -->
+
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content"><div class="modal-body" id="modal_response">
+    </div>
+    </div>
+  </div>
+</div>
+
+<!--  for remark -->
+
+<div class="modal fade" id="myModal1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"><div class="modal-body" id="modal_response1">
     </div>
     </div>
   </div>
@@ -59,6 +80,16 @@
         $.ajax({
             type: "PATCH",
             url: "/generate/sticker/"+id,
+            dataType: "script",
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
+    function remark(id){
+        $.ajax({
+            type: "PATCH",
+            url: "/generate/remark/"+id,
             dataType: "script",
             success: function(data) {
                 console.log(data);

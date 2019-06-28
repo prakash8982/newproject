@@ -2,13 +2,13 @@
 <h1>Editing</h1>
 </div>
 
-<% if @pstaff.type_applicant == "pstaff" %>
+<% if @pstaff.type_applicant == "Parmanent Staff" %>
         <%= render 'form', pstaff: @pstaff %>
- <% elsif @pstaff.type_applicant == "tstaff" %>
+ <% elsif @pstaff.type_applicant == "Temprary Staff" %>
  		 <%= render 'form1', pstaff: @pstaff %>
- <% elsif @pstaff.type_applicant == "student" %>
+ <% elsif @pstaff.type_applicant == "Student" %>
         <%= render 'phd_form', pstaff: @pstaff %>
- <% elsif @pstaff.type_applicant == "others" %>
+ <% elsif @pstaff.type_applicant == "Others" %>
         <%= render 'othres_form', pstaff: @pstaff %>
 <% end %>
 
