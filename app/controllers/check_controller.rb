@@ -62,7 +62,7 @@ class CheckController < ApplicationController
                 user.phase2=true
                 @user = User.all
                 for i in @user do
-                  if(i.role == user.department)
+                  if(i.phase3 == true)
                     @id = i
                     break 
                   end
@@ -76,7 +76,7 @@ class CheckController < ApplicationController
             elsif current_user.phase3 == true
                 @user=Pstaff.find(@remark.id)
                 @user.disapprove=true
-                @user.phase3_remark=pstaff_params[:phase2_remark]
+                @user.phase3_remark=pstaff_params[:phase3_remark]
                 z = @user.user_id
                 @p = User.find(z)
                 @user.save
@@ -121,7 +121,7 @@ class CheckController < ApplicationController
              @user.save
              z = @user.user_id
              @p = User.find(z)
-             NotificationMailer.with(user:@p).disapprove_email.deliver
+             NotificationMailer.with(user:@p).approve_email.deliver
              flash[:notice] = "approved succesfully!"
              redirect_to check_phase3_path
          end

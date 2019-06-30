@@ -109,6 +109,16 @@ class PstaffsController < ApplicationController
     
     respond_to do |format|
       if @pstaff.update(pstaff_params)
+
+        @user = User.all
+        for i in @user do
+          if(i.phase1 == true)
+            @id = i
+            break 
+          end
+      end
+            
+      NotifyMailer.with(user: @id).recive_email.deliver
         #send email from here
         format.html { redirect_to @pstaff, notice: 'Pstaff was successfully updated.' }
         format.json { render :show, status: :ok, location: @pstaff }

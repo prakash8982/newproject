@@ -12,17 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2019_06_30_102043) do
 
-  create_table "phase1s", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "phase1s", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "phases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "phases", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pstaffs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "pstaffs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "gender"
     t.string "mobile_no"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2019_06_30_102043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "sticker"
+    t.boolean "disapprove", default: false
     t.boolean "phase1", default: false
     t.boolean "phase2", default: false
     t.boolean "phase3", default: false
@@ -49,8 +51,6 @@ ActiveRecord::Schema.define(version: 2019_06_30_102043) do
     t.string "unique_id"
     t.string "RC_holder_name"
     t.string "relationship"
-    t.string "sticker"
-    t.boolean "disapprove", default: false
     t.string "phase1_remark", default: "NA"
     t.string "phase2_remark", default: "NA"
     t.string "phase3_remark", default: "NA"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_06_30_102043) do
     t.datetime "document_updated_at"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
