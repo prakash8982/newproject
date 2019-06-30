@@ -12,6 +12,7 @@
       <th>Name</th>
       <th>EMP_ID</th>
       <th>Department</th>
+      <th>Applicant Type</th>
       <th>Remark</th>
       <th>show</th>
       <th>Aprrove</th>
@@ -29,10 +30,11 @@
          <td ><%= phase.name %></td>
          <td ><%= phase.unique_id %></td>
          <td ><%= phase.department %></td>
+         <td><%= phase.type_applicant%></td>
          <td><%= phase.phase1_remark  %></td>
          <td ><%= link_to "Show", show_user_path(phase.id), method: :get,class:"btn btn-primary btn-sm" %></td>
          <!-- <td ><%= link_to "Approve", approve_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td> -->
-         <td><button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment(<%= phase.id%>);" data-disable-with="Validating ...">Submit</button></td>
+         <td><button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment(<%= phase.id%>);" data-disable-with="Validating ...">Approve</button></td>
          <td ><%= link_to "Disapprove", disapprove_path(phase), method: :post,class:"btn btn-primary btn-sm" %></td>
    
 

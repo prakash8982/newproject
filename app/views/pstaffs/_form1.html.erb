@@ -38,11 +38,11 @@
 
    
   <div class="field">
-  <h5><%= form.text_field :type_applicant, label: "Applicant Type",:required=>true ,:disabled=>true, class:"label" %></h5>
+  <h5><%= form.text_field :type_applicant, label: "Applicant Type",:required=>true ,:readonly=>true, class:"label" %></h5>
   </div>
    
  <div class="field">
-  <h5><%= form.text_field :vehical_type, label: "Vehicle Type",:required=> true , class:"label" %></h5>
+  <h5><%= form.select :vehical_type, Pstaff::VEHICAL ,:required=>true , class:"label" %></h5>
   </div>
    
    <div class="field">

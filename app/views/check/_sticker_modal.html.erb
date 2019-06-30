@@ -1,7 +1,7 @@
   <%=form_for(@sticker,:url=>sticker_number_path) do |f| %>
 
 
-    <%= f.text_field :name,{:class=>'form-control',:placeholder=>'Sticker Number',:required=>true} %>
+    <%= f.text_field :name,{:class=>'form-control',:placeholder=>'Sticker Number',:required=>true,:readonly=>true} %>
     <br>
     <%= f.text_field :sticker,{:class=>'form-control',:placeholder=>'Sticker Number',:required=>true} %>
     <br>

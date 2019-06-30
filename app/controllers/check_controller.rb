@@ -1,8 +1,6 @@
 class CheckController < ApplicationController
-    skip_before_action :verify_authenticity_token,:only =>[:sticker,:remark]
-
-
-    before_action :authenticate_user!,expect: [:show,:index]
+  skip_before_action :verify_authenticity_token,:only =>[:sticker,:remark]
+  before_action :authenticate_user!,expect: [:show,:index]
 	def phase1
         if current_user.phase1 == true
             @phases= Pstaff.all
@@ -10,15 +8,15 @@ class CheckController < ApplicationController
             redirect_to new_user_session_path
         end
 
-    end
+  end
 
-    def phase2
+  def phase2
       if current_user.phase2 == true
             @phases= Pstaff.all
       else
             redirect_to new_user_session_path
       end
-    end
+  end
 
     def phase3
         if current_user.phase3 == true
@@ -39,10 +37,22 @@ class CheckController < ApplicationController
             if current_user.phase1 == true
                 x=Pstaff.find(@remark.id)
                 x.phase1=true
-                z = x.user_id
                 x.phase1_remark=pstaff_params[:phase1_remark]
+                
+
+                @user = User.all
+                for i in @user do
+                  if(i.role == x.department)
+                    @id = i
+                    break 
+                  end
+                end
                 x.save
-                @p = User.find(z)
+
+                NotifyMailer.with(user: @id).recive_email.deliver
+        
+
+                #@p = User.find(z)
                 # NotificationMailer.with(user:@p).approve_email.deliver
                 flash[:notice] = "approved succesfully!"
                 redirect_to check_phase1_path
@@ -50,7 +60,16 @@ class CheckController < ApplicationController
                 user=Pstaff.find(@remark.id)
                 user.phase2_remark=pstaff_params[:phase2_remark]
                 user.phase2=true
+                @user = User.all
+                for i in @user do
+                  if(i.role == user.department)
+                    @id = i
+                    break 
+                  end
+                end
                 user.save
+                NotifyMailer.with(user: @id).recive_email.deliver
+                
                 flash[:notice] = "approved succesfully!"
                 redirect_to check_phase2_path
     
@@ -58,7 +77,10 @@ class CheckController < ApplicationController
                 @user=Pstaff.find(@remark.id)
                 @user.disapprove=true
                 @user.phase3_remark=pstaff_params[:phase2_remark]
+                z = @user.user_id
+                @p = User.find(z)
                 @user.save
+                NotificationMailer.with(user:@p).disapprove_email.deliver
                 flash[:notice] = "disapproved succesfully!"
                 redirect_to check_phase3_path()
             else
@@ -79,10 +101,10 @@ class CheckController < ApplicationController
 
              x=Pstaff.find(@sticker.id)
              x.phase1=true
-             z = x.user_id
+             
              x.save
-             @p = User.find(z)
-             NotificationMailer.with(user:@p).approve_email.deliver
+             #@p = User.find(z)
+             #NotificationMailer.with(user:@p).approve_email.deliver
              redirect_to check_phase1_path
 
          elsif current_user.phase2 == true
@@ -97,6 +119,9 @@ class CheckController < ApplicationController
              @user.phase3=true
              @user.sticker=pstaff_params[:sticker]
              @user.save
+             z = @user.user_id
+             @p = User.find(z)
+             NotificationMailer.with(user:@p).disapprove_email.deliver
              flash[:notice] = "approved succesfully!"
              redirect_to check_phase3_path
          end
@@ -168,18 +193,21 @@ class CheckController < ApplicationController
         if current_user.phase1 == true
         
         x=Pstaff.find(params[:id])
-        x.disapprove=true
+        x.disapprove= true
         z = x.user_id
         x.save
         @p = User.find(z)
-        # NotificationMailer.with(user:@p).disapprove_email.deliver
+         NotificationMailer.with(user:@p).disapprove_email.deliver
         flash[:notice] = "application disapprove succesfully"
 
         redirect_to check_phase1_path
     elsif current_user.phase2 == true
         user=Pstaff.find(params[:id])
         user.disapprove = true
+        z = user.user_id
         user.save
+        @p = User.find(z)
+         NotificationMailer.with(user:@p).disapprove_email.deliver
         flash[:notice] = "application disapprove succesfully"
 
         redirect_to check_phase2_path

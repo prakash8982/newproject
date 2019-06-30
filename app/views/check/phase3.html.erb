@@ -13,6 +13,7 @@
             <th>Name</th>
             <th>EMP_ID</th>
             <th>Department</th>
+            <th>Applicant Type</th>
             <th>Remark</th>
             <th>Show</th>
             <th>approve</th>
@@ -27,20 +28,50 @@
        <td ><%= phase.name %></td>
        <td ><%= phase.unique_id %></td>
        <td ><%= phase.department %></td>
+       <td><%= phase.type_applicant%></td>
        <td><%=phase.phase2_remark%></td>
        <td ><%= link_to "Show", show_user_path(phase.id), method: :get,class:"btn btn-primary btn-sm" %></td>
-        <td> <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment(<%=phase.id%>);" data-disable-with="Validating ...">Submit</button></td>
-         <td><button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="remark(<%= phase.id%>);" data-disable-with="Validating ...">Submit</button></td>
+        <td> <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="sticker_allotment(<%=phase.id%>);" data-disable-with="Validating ...">Aproove</button></td>
+         <td><button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="remark(<%= phase.id%>);" data-disable-with="Validating ...">Disapprove</button></td>
    
   </tr>
     <% end %>
    <% end %>
 </tbody>
 </table>
-<% if current_user %>
-    <%= link_to "signout" , destroy_user_session_path ,method:     :delete  %>
-    <%= link_to 'change password' , edit_user_registration_path %>
-<% end %>
+
+<h2>Approved application</h2>
+
+<table id="table_id" class="table table-striped">
+<thead>
+            <tr>
+            <th>Name</th>
+            <th>EMP_ID</th>
+            <th>Department</th>
+            <th>Applicant Type</th>
+            <th>Show</th>
+            <th>Sticker Number</th>
+          </tr>
+</thead>
+<tbody>
+<% @phases.each do |phase| %>
+  <% if phase.phase3 == true && phase.disapprove == false %>
+  <tr>
+
+       <td ><%= phase.name %></td>
+       <td ><%= phase.unique_id %></td>
+       <td ><%= phase.department %></td>
+       <td><%= phase.type_applicant%></td>
+       <td ><%= link_to "Show", show_user_path(phase.id), method: :get,class:"btn btn-primary btn-sm" %></td>
+        <td>phase.sticker</td>
+  </tr>
+    <% end %>
+   <% end %>
+</tbody>
+</table>
+
+
+
 
    <!-- <center>
     <button type="button" class="btn btn-warning btn-md" data-toggle="modal" style="margin:10px;"  onclick="remark();" data-disable-with="Validating ...">Submit</button>

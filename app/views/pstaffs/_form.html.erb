@@ -38,11 +38,13 @@
 
    
   <div class="field">
-  <h5><%= form.text_field :type_applicant, label: "Applicant Type",:required=>true, :disabled=>true, class:"label" %></h5>
+  <h5><%= form.text_field :type_applicant, label: "Applicant Type",:readonly=>true, :required=>true, class:"label" %></h5>
   </div>
    
  <div class="field">
-  <h5><%= form.text_field :vehical_type, label: "Vehicle Type",:required=> true, class:"label" %></h5>
+  <h5>
+    <%= form.select :vehical_type, Pstaff::VEHICAL ,:required=>true , class:"label" %>
+  </h5>
   </div>
    
    <div class="field">
@@ -64,11 +66,11 @@
 
   
 
-  <div class="ffile">
+  <div class="file">
   <h5><%= form.file_field :registration_certificate ,:required=>true , class:"label,ui pink button"%></h5>
   </div>
 
-  <div class="field">
+  <div class="file">
    <h5><%= form.file_field :aadhaar_card ,:required=>true , class:"label,ui pink button"%></h5>
   </div>
 
