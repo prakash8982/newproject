@@ -64,7 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "paperclip", "~> 6.1.0"
 
-gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'devise', '~> 4.7'
 
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem "bootstrap_form", ">= 4.2.0"
